@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function SearchHistoryPage() {
   return (
-    <main className="md:w-[70rem] flex-grow flex flex-col items-center">
+    <main className="md:w-[90%]  xl:w-[70rem] mt-[12rem] flex-grow">
       Search History
     </main>
   );

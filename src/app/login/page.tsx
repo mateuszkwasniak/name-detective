@@ -5,8 +5,6 @@ export const metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="md:w-[70rem] flex-grow flex flex-col items-center">
-      Login
-    </main>
+    <main className="md:w-[90%] xl:w-[70rem] mt-[12rem] flex-grow">Login</main>
   );
 }
