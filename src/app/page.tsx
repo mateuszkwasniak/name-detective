@@ -19,6 +19,7 @@ export default function HomePage() {
             <Image
               src="/hero.png"
               fill
+              sizes="450px 450px"
               priority
               alt="Dude with the looking glass"
               className="object-cover"

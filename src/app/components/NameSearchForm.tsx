@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import { MdOutlineWarningAmber } from "react-icons/md";
 import Spinner from "@/app/components/Spinner";
 
-const NAME_REGEX = /^[a-zA-Z]{2,30}$/;
+const NAME_REGEX = /^[a-zA-Z]{1,30}$/;
 
 export default function NameSearchForm() {
   const [name, setName] = useState<string>("");
   const [nameInputFocus, setNameInputFocus] = useState<boolean>(false);
-  const [validNameInput, setValidNameInput] = useState<boolean>(true);
+  const [validNameInput, setValidNameInput] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -23,6 +23,7 @@ export default function NameSearchForm() {
   ) => {
     e.preventDefault();
     setValidNameInput(true);
+    setError("");
 
     const validName = NAME_REGEX.test(name);
 
@@ -40,7 +41,10 @@ export default function NameSearchForm() {
         setError(error.message);
         return;
       }
+      const data: GenderizeResponseData[] | GenderizeResponseData =
+        await response.json();
 
+      console.log(data);
       setName("");
     } catch (error) {
       setError("Something went wrong. Please try again later.");
@@ -95,7 +99,7 @@ export default function NameSearchForm() {
             !nameInputFocus && "absolute left-[-9999px] opacity-0"
           } flex gap-2 items-center mt-2 text-sm text-slate-600 ease-in-out duration-300 opacity-1`}
         >
-          2 to 30 characters, using latin alphabet.
+          1 to 30 characters, using latin alphabet.
         </p>
       </div>
       <button
