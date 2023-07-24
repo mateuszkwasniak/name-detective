@@ -37,3 +37,9 @@ type NameDataContext = {
   nameData: NameData;
   setNameData: Dispatch<SetStateAction<NameData>>;
 };
+
+interface ISearchResult {
+  name: string;
+  data: string;
+  createdAt: Date;
+}

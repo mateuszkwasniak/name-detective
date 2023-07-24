@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { isErrorWithMessageAndStatus } from "@/utils/isErrorWithMessageAndStatus";
 import { fetchGenderize } from "@/lib/fetchGenderize";
 import { fetchNationalize } from "@/lib/fetchNationalize";
+import { connectMongo } from "@/utils/mongoConfig";
+import { SearchResult } from "@/mongo/models/SearchResult";
+import { HydratedDocument } from "mongoose";
 
 const NAME_REGEX = /^[a-zA-Z]{1,30}$/;
 
@@ -38,6 +41,8 @@ export async function GET(request: Request) {
     );
   }
   try {
+    await connectMongo();
+
     const nationalityData: NationalizeResponseData = await fetchNationalize(
       name
     );
@@ -58,6 +63,13 @@ export async function GET(request: Request) {
       nationalityData,
       genderData,
     };
+
+    const newSearch: HydratedDocument<ISearchResult> = new SearchResult({
+      name,
+      data: JSON.stringify(nameData),
+    });
+
+    await newSearch.save();
 
     return new NextResponse(JSON.stringify({ data: nameData }), {
       status: 200,

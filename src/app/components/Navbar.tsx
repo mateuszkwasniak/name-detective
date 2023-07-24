@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { IoMdRefresh } from "react-icons/io";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <nav className="w-full fixed top:0 z-50 flex justify-center border-b border-slate-200 bg-white">
@@ -23,6 +26,18 @@ export default function Navbar() {
           >
             Sign in
           </Link>
+          <Link
+            href="/search-history"
+            className="w-fit text-lg rounded-md text-slate-800  px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
+          >
+            History
+          </Link>
+          <button
+            onClick={() => router.refresh()}
+            className="w-fit text-lg rounded-md text-slate-800  px-5 py-1 flex items-center gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
+          >
+            <IoMdRefresh /> Refresh
+          </button>
         </div>
       </div>
     </nav>
