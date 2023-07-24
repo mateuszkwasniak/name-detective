@@ -1,9 +1,10 @@
 "use client";
 
 import { ChangeEvent, FormEvent } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MdOutlineWarningAmber } from "react-icons/md";
 import Spinner from "@/app/components/Spinner";
+import { NameContext } from "../name-provider";
 
 const NAME_REGEX = /^[a-zA-Z]{1,30}$/;
 
@@ -13,6 +14,8 @@ export default function NameSearchForm() {
   const [validNameInput, setValidNameInput] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+
+  const { setNameData } = useContext(NameContext);
 
   const handleNameInputChange: (e: ChangeEvent<HTMLInputElement>) => void = (
     e
@@ -41,10 +44,9 @@ export default function NameSearchForm() {
         setError(error.message);
         return;
       }
-      const data: GenderizeResponseData[] | GenderizeResponseData =
-        await response.json();
+      const { data } = await response.json();
 
-      console.log(data);
+      setNameData(data);
       setName("");
     } catch (error) {
       setError("Something went wrong. Please try again later.");

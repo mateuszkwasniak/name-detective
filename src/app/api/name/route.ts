@@ -54,7 +54,7 @@ export async function GET(request: Request) {
       genderData = await fetchGenderize(name);
     }
 
-    const nameData = {
+    const nameData: NameData = {
       nationalityData,
       genderData,
     };

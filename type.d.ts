@@ -16,6 +16,7 @@ type GenderizeResponseData = {
   name: string;
   gender: string | null;
   probability: number;
+  country_id: string;
 };
 
 type NationalizeResponseData = {
@@ -25,4 +26,14 @@ type NationalizeResponseData = {
     country_id: string;
     probability: number;
   }[];
+};
+
+type NameData = {
+  nationalityData: NationalizeResponseData | null;
+  genderData: GenderizeResponseData | GenderizeResponseData[] | null;
+} | null;
+
+type NameDataContext = {
+  nameData: NameData;
+  setNameData: Dispatch<SetStateAction<NameData>>;
 };

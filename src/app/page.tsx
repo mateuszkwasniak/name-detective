@@ -1,5 +1,7 @@
 import Image from "next/image";
 import NameSearchForm from "./components/NameSearchForm";
+import { NameProvider } from "./name-provider";
+import NameInfo from "./components/NameInfo";
 
 export const metadata = {
   title: "Name Detective",
@@ -26,9 +28,14 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <div className="md:w-[300px] xl:w-[400px]">
-          <NameSearchForm />
-        </div>
+        <NameProvider>
+          <div className="md:w-[500px] xl:w-[600px] flex flex-col content-end gap-16">
+            <div className="md:w-[350px] xl:w-[400px]">
+              <NameSearchForm />
+            </div>
+            <NameInfo />
+          </div>
+        </NameProvider>
       </section>
     </main>
   );
