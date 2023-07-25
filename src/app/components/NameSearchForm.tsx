@@ -62,12 +62,12 @@ export default function NameSearchForm() {
 
   return (
     <form
-      className="p-8 flex w-full flex-col border border-slate-100 rounded-md shadow-md"
+      className="p-8 flex w-full flex-col border border-slate-100 rounded-md shadow-md text-slate-600"
       onSubmit={handleFormSubmission}
     >
       <label
         htmlFor="name"
-        className="xl:text-3xl font-medium text-slate-600 mb-6"
+        className="md:text-3xl font-medium mb-12 text-slate-800"
       >
         Enter a name
       </label>

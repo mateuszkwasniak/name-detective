@@ -8,7 +8,7 @@ export const revalidate = 0;
 
 export const metadata = {
   title: "Search History",
-  description: "Browse the history of searched names",
+  description: "Browse the history of investigated names",
 };
 
 export default async function SearchHistoryPage() {
@@ -16,7 +16,7 @@ export default async function SearchHistoryPage() {
     getSearchHistory();
 
   return (
-    <main className="md:w-[90%] xl:w-[70rem] mt-[12rem] flex-grow">
+    <main className="w-[90%] xl:w-[70rem] mt-[12rem] flex-grow">
       <h1 className="md:text-4xl text-center font-semibold mb-16 text-slate-800">
         Investigations History
       </h1>

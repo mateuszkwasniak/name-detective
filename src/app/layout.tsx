@@ -1,7 +1,7 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import Navbar from "./components/Navbar";
+import { AuthProvider } from "./auth-provider";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -21,8 +21,10 @@ export default function RootLayout({
       <body
         className={`${jost.className} min-h-screen relative overflow-x-hidden flex flex-col items-center`}
       >
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

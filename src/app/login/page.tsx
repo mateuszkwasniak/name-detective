@@ -1,3 +1,5 @@
+import LoginForm from "./components/LoginForm";
+
 export const metadata = {
   title: "Login",
   description: "Login as the admin",
@@ -5,6 +7,8 @@ export const metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="md:w-[90%] xl:w-[70rem] mt-[12rem] flex-grow">Login</main>
+    <main className="w-[90%] xl:w-[70rem] mt-[12rem] flex-grow">
+      <LoginForm />
+    </main>
   );
 }
