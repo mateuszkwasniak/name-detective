@@ -37,16 +37,21 @@ export default function Navbar() {
   }, [refreshLogin]);
 
   return (
-    <nav className="w-full fixed top:0 z-50 flex justify-center border-b border-slate-200 bg-white text-slate-800">
-      <div className="w-[90%] h-[5rem] xl:w-[70rem] py-5 bg-white flex items-center justify-between md:text-base xl:text-lg text-slate-800">
+    <nav className="w-full fixed top:0 left-0 z-50 flex justify-center border-b border-slate-200 bg-white text-slate-800">
+      <div className="w-[90%] md:h-[5rem] xl:w-[70rem] py-5 bg-white flex items-center justify-between md:text-base xl:text-lg text-slate-800">
         <Link
-          className="font-bold text-3xl hover:opacity-70 duration-700 ease-in-out"
+          className="font-bold text-2xl md:text-3xl hover:opacity-70 duration-700 ease-in-out"
           href="/"
         >
-          Name Detective
+          Name <br className="md:hidden" />
+          Detective
         </Link>
-        <div className="flex gap-10">
-          {auth.name && <p className="flex items-center">Hello, {auth.name}</p>}
+        <div className="flex gap-5 md:gap-10">
+          {auth.name && (
+            <p className="invisible w-0 md:flex items-center">
+              Hello, {auth.name}
+            </p>
+          )}
 
           {auth.name && (
             <>
@@ -54,7 +59,7 @@ export default function Navbar() {
                 <Link
                   prefetch={false}
                   href="/search-history"
-                  className="w-fit text-lg rounded-md px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
+                  className="w-fit text-sm md:text-lg rounded-md px-2 md:px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
                 >
                   History
                 </Link>
@@ -62,7 +67,7 @@ export default function Navbar() {
               {pathname === "/search-history" && (
                 <button
                   onClick={() => router.refresh()}
-                  className="w-fit text-lg rounded-md px-5 py-1 flex items-center gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
+                  className="w-fit text-sm md:text-lg rounded-md px-2 md:px-5 py-1 flex items-center gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
                 >
                   <IoMdRefresh /> Refresh
                 </button>
@@ -72,7 +77,7 @@ export default function Navbar() {
 
           {auth.name ? (
             <button
-              className="w-fit text-lg rounded-md text-slate-800  px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
+              className="w-fit text-sm md:text-lg rounded-md text-slate-800 px-2 md:px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
               onClick={handleLogout}
             >
               Sign out
@@ -80,7 +85,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="w-fit text-lg rounded-md text-slate-800  px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
+              className="w-fit text-sm md:text-lg rounded-md text-slate-800  px-5 py-1 flex items-center justify-between gap-2 bg-opacity-80 hover:bg-slate-100 duration-700 ease-in-out shadow-md"
             >
               Sign in
             </Link>

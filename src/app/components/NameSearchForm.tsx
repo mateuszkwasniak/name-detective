@@ -67,7 +67,7 @@ export default function NameSearchForm() {
     >
       <label
         htmlFor="name"
-        className="md:text-3xl font-medium mb-12 text-slate-800"
+        className="text-2xl md:text-3xl font-medium mb-12 text-slate-800"
       >
         Enter a name
       </label>

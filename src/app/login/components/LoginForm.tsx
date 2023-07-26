@@ -108,7 +108,9 @@ export default function LoginForm() {
       } p-8 flex md:w-[450px] flex-col border border-slate-100 rounded-md shadow-md text-slate-600`}
       onSubmit={handleFormSubmission}
     >
-      <h2 className="md:text-3xl font-medium mb-12 text-slate-800">Sign in</h2>
+      <h2 className="text-2xl md:text-3xl font-medium mb-12 text-slate-800">
+        Sign in
+      </h2>
       <label htmlFor="login" className="mb-2">
         Login
       </label>

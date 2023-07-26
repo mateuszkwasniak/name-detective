@@ -1,7 +1,7 @@
 "use client";
 
 import ReactDOMServer from "react-dom/server";
-import { useContext, ReactNode, ReactElement } from "react";
+import { useContext, useEffect, useRef, RefObject } from "react";
 import { NameContext } from "../name-provider";
 import { convert } from "html-to-text";
 
@@ -19,6 +19,14 @@ export default function NameInfo() {
     navigator.clipboard.writeText(text);
   };
 
+  const displayRef: RefObject<HTMLParagraphElement> =
+    useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    displayRef?.current &&
+      displayRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [nameData]);
+
   let content: JSX.Element;
 
   if (
@@ -28,7 +36,10 @@ export default function NameInfo() {
   ) {
     content = (
       <>
-        <p className="xl:text-xl text-slate-800 font-light mb-4">
+        <p
+          className="xl:text-xl text-slate-800 font-light mb-4"
+          ref={displayRef}
+        >
           We have analyzed over {nameData.nationalityData.count} records in
           order to determine the origins of {nameData.nationalityData.name}.
           <br />
@@ -50,7 +61,7 @@ export default function NameInfo() {
             return (
               <li className="list-disc mb-2" key={country.country_id}>
                 {regionNames.of(country.country_id)} &#40;
-                {(country.probability * 100).toFixed(0)}% probability&#41; -
+                {(country.probability * 100).toFixed(1)}% probability&#41; -
                 gender is{" "}
                 {(genderDataElem && genderDataElem?.gender) || "unknown"}{" "}
                 {genderProbability &&
