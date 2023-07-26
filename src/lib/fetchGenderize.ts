@@ -4,7 +4,7 @@ export async function fetchGenderize(
 ): Promise<GenderizeResponseData> {
   const genderizeResponse: Response = await fetch(
     `${process.env.GENDERIZE_URL}?name=${name}${
-      country ? `&country_id=${country}` : null
+      country ? `&country_id=${country}` : ""
     }`
   );
 

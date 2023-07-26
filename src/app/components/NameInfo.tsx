@@ -10,6 +10,8 @@ const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 export default function NameInfo() {
   const { nameData } = useContext(NameContext);
 
+  console.log(nameData);
+
   const handleCopyRawToClipboard = (nameData: NameData): void => {
     navigator.clipboard.writeText(JSON.stringify(nameData));
   };
@@ -32,6 +34,7 @@ export default function NameInfo() {
   if (
     nameData?.genderData &&
     nameData?.nationalityData &&
+    nameData.nationalityData?.count > 0 &&
     Array.isArray(nameData.genderData)
   ) {
     content = (
@@ -73,15 +76,14 @@ export default function NameInfo() {
         </ul>
       </>
     );
-    //display different content if no nationalityData or no genderData or genderData is not array, etc.
-  } else if (nameData && !nameData?.genderData && !nameData?.nationalityData) {
+  }
+  //display different content if there's no nationalityData but there's genderData, etc.
+  else {
     content = (
       <p className="xl:text-xl text-slate-800 font-light mb-4">
         No investigation results for that name.
       </p>
     );
-  } else {
-    content = <></>;
   }
 
   return (
@@ -93,9 +95,10 @@ export default function NameInfo() {
       {content}
       <div
         className={`${
-          !nameData?.genderData &&
-          !nameData?.nationalityData &&
-          "absolute left-[9999px]"
+          (!nameData?.genderData && !nameData?.nationalityData) ||
+          (nameData?.nationalityData &&
+            nameData.nationalityData?.count === 0 &&
+            "absolute left-[9999px]")
         } mt-12 mb-12 flex gap-4`}
       >
         <button

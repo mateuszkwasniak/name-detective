@@ -14,7 +14,11 @@ export default async function SearchList({ searchResultsPromise }: Props) {
     const searchHistory = await searchResultsPromise;
 
     if (searchHistory?.length === 0) {
-      content = <p>No name was investigated yet.</p>;
+      content = (
+        <p className="md:text-xl text-center text-slate-800">
+          No name was investigated yet.
+        </p>
+      );
     } else {
       content = (
         <>

@@ -1,6 +1,7 @@
 import { HydratedDocument } from "mongoose";
 import { BsGenderAmbiguous } from 'react-icons/bs';
 import { MdOutlineFlagCircle } from 'react-icons/md'
+import ClientsLocaleDateTime from "./ClientsLocaleDateTime";
 
 type Props = {
   searchResult: HydratedDocument<ISearchResult>;
@@ -22,13 +23,10 @@ export default function SearchCard({ searchResult }: Props) {
 
 
   return (
-    <article className="w-full md:w-fit h-fit border border-slate-50 rounded-md shadow-md p-4 md:p-16 flex flex-col md:flex-row gap-10 md:gap-20 justify-center text-slate-800">
+    <article className="w-full md:w-fit md:min-w-[90%] h-fit border border-slate-50 rounded-md shadow-md p-4 md:p-16 flex flex-col md:flex-row gap-10 md:gap-20 justify-center text-slate-800">
     <div className="flex flex-col">
       <h3 className="text-lg md:text-xl font-semibold mb-2">Date:</h3>
-      <p className="md:text-xl">
-        {searchResult.createdAt.toLocaleDateString()} at{" "}
-        {searchResult.createdAt.toLocaleTimeString()}{" "}
-      </p>
+      <ClientsLocaleDateTime date={searchResult.createdAt}/>
       <hr className="h-0 w-full border border-t-0 border-slate-200 my-10"/>
       <h3 className="text-lg md:text-xl font-semibold mb-2">Name:</h3>
       <p className="md:text-xl mb-5">{searchResult.name}</p>
