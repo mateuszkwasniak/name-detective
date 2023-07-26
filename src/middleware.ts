@@ -3,7 +3,7 @@ import { verify } from "./utils/jwt";
 
 const allowedOrigns = [
   "http://localhost:3000",
-  "https://name-detective.vercel.app/",
+  "https://name-detective.vercel.app",
 ];
 const protectedRoutes = ["/search-history"];
 
