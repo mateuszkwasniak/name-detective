@@ -41,3 +41,5 @@ Enter any name using the Latin alphabet in the form on the main page and you wil
    npm run start
 
 ## Demo
+
+You can find the demo version of the application hosted on Vercel here: [Name Detective](https://name-detective.vercel.app/).
