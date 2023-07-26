@@ -6,6 +6,7 @@ const protectedRoutes = ["/search-history"];
 
 export async function middleware(request: NextRequest) {
   const origin = request.headers.get("origin");
+
   if (origin !== null && !allowedOrigns.includes(origin)) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
       status: 400,

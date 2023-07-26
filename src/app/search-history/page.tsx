@@ -20,7 +20,13 @@ export default async function SearchHistoryPage() {
       <h1 className="text-3xl md:text-4xl text-center font-semibold mb-16 text-slate-800">
         Investigations History
       </h1>
-      <Suspense fallback={<Spinner dark={true} />}>
+      <Suspense
+        fallback={
+          <div className="flex justify-center">
+            <Spinner dark={true} />
+          </div>
+        }
+      >
         <SearchList searchResultsPromise={searchResultsPromise} />
       </Suspense>
     </main>

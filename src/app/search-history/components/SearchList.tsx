@@ -1,6 +1,7 @@
 import { HydratedDocument } from "mongoose";
 import React from "react";
 import SearchCard from "./SearchCard";
+import ScrollTopButton from "./ScrollTopButton";
 
 type Props = {
   searchResultsPromise: Promise<HydratedDocument<ISearchResult>[]>;
@@ -16,14 +17,17 @@ export default async function SearchList({ searchResultsPromise }: Props) {
       content = <p>No name was investigated yet.</p>;
     } else {
       content = (
-        <ul className="flex flex-col items-center gap-12">
-          {searchHistory?.map((searchResult) => (
-            <SearchCard
-              searchResult={searchResult}
-              key={searchResult._id.toString()}
-            />
-          ))}
-        </ul>
+        <>
+          <ul className="flex flex-col items-center gap-12">
+            {searchHistory?.map((searchResult) => (
+              <SearchCard
+                searchResult={searchResult}
+                key={searchResult._id.toString()}
+              />
+            ))}
+          </ul>
+          <ScrollTopButton />
+        </>
       );
     }
   } catch (error) {

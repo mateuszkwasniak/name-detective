@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/app/auth-provider";
 
-export const useLogout = (): { logout: () => Promise<void> } => {
+export const useLogout = () => {
   const { setAuth } = useContext(AuthContext);
   const router = useRouter();
 

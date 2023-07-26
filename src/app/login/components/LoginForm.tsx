@@ -156,7 +156,7 @@ export default function LoginForm() {
           } flex gap-2 items-center mt-2 text-sm text-red-700 ease-in-out duration-300 opacity-1`}
         >
           <MdOutlineWarningAmber />
-          Please enter your password
+          Please enter the password
         </p>
       </div>
       <button

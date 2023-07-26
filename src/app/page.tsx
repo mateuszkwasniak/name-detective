@@ -5,7 +5,7 @@ import NameInfo from "./components/NameInfo";
 
 export const metadata = {
   title: "Name Detective",
-  description: "Research the origin and gender of the given name",
+  description: "Investigate the origin and gender of the given name",
 };
 
 export default function HomePage() {
@@ -24,7 +24,7 @@ export default function HomePage() {
               sizes="450px 450px"
               priority
               alt="Dude with the looking glass"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         </div>
